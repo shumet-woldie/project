@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Personal Website</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-----external link------->
+<link rel="stylesheet" href="style.css"> 
+ <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://kit.fontawesome.com/b51225b07e.js" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-light shadow-lg p-4 m-4">
+
+<nav class="navbar navbar-expand-sm bg-light navbar-dark fixed-top shadow">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="images/shumet23.JPG" alt="LOGO" width="80px" height="40px" class="rounded-pill">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon bg-dark"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link text-dark " href="index.html">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark" href="about-me.html">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark disabled" href="#">PORTIFOLIO</a>
+        </li>    
+        <li class="nav-item">
+          <a class="nav-link text-dark disabled" href="#">SERVICES</a>
+        </li>  
+        <li class="nav-item">
+          <a class="nav-link text-success active" href="#">CONTACT</a>
+        </li>  
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-5 bg-white cont-div" st >
+  <h3 style="margin-top: 100px;">Contact</h3>
+  <p>I'd love to hear from you!</p>
+  <p>Here's how to contact me and stay up to date.</p>
+   <div  class="row mt-5">
+          <div class="col-sm-4">
+             
+            <div>
+             <i class="fas fa-paper-plane" style="color: rgb(65, 122, 221); font-size:40px;"></i>Mail with <br> shumetwoldie2323@gmail.com
+            </div>
+            <div class="mt-5">
+            <i class="fas fa-phone-square-alt" style="color: green; font-size:40px;"></i>Call with <br>+251-19-66-50-11
+            </div>
+            <div class="mt-5 mb-5">
+             <a href="https://t.me/Shumetwoldie"><li class="fab fa-telegram " style="width: 40%; font-size:40px;"></li></a><br>
+             Contact me on telegram
+            </div>
+
+
+          </div>
+          <div class="col-sm-1">
+    
+          </div>
+          <div class="col-sm-6">
+             <form name="submit-to-google-sheet" class="form-control" action="#">
+            <div class="mb-5">
+              <label for="username" class="form-label">Username:</label>
+              <input type="text" class="form-control" name="username" placeholder="Enter your name" required autocomplete="off"  pattern="[A-Za-z]+[\W]?[A-Za-z]+" title="Your name should be only letters and white space">
+            </div>
+            <div class="mb-5">
+               <label for="email">Email:</label>
+               <input type="email" class="form-control" name="email" placeholder="Enter  email address" required autocomplete="off" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" title="Please enter valid email">
+            </div>
+            <div class="mb-5">
+               <label for="message">Message:</label>
+               <textarea class="form-control" name="message"rows="5" placeholder="Enter your message" required autocomplete="off" autocapitalize="on"></textarea>
+            </div>
+            <div class="mb-5">
+               <button class="btn btn-success" type="submit">Send</button><span class="p-4 text-success" id="message"></span>
+            </div>
+             </form>    
+          
+          </div>
+
+   </div>
+  
+
+</div>
+
+ <!-----------script for google sheet---------------->
+ <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbxbEajgM5lEaEh-oKcBO6M3eOMJOjtlHUGaxviLOQWR_cWujOg9VlHkldYRt6QsrbppEg/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const msg = document.getElementById("message")
+
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+          msg.innerHTML = " Message has sent successfully." 
+          setTimeout(function(){
+              msg.innerHTML=" "
+          },5000)
+          form.reset()
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
+<!---------------------footer sction-------------->
+<footer>
+    <p>
+<address>
+  <a href="mailto:shumetwoldie2323@gmail.com" class="text-decoration-none">Copy Right &copy; Shumet Woldie.All Right is reserved!!</a>
+</address></p>
+</footer>
+
+</body>
+</html>
